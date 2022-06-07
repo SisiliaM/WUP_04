@@ -64,7 +64,17 @@ model1 <- aov(WORDSUM~DEGREE,data=GSScsv)
 summary.aov(model1)
 ```
 
-The chances of getting results such as this is there was no difference between subgroups is 2.36 out of 10,000. This allows us to believe there is a difference in test scores betwee subgroups.
+The chances of getting results such as this is there was no difference between subgroups is 2.36 out of 10,000. This allows us to believe there is a difference in test scores between subgroups.
+
+Now that we have a low P value we want to see what values are different from one anther. We will follow up with using a T test
+
+```{r}
+#we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
+par(mar = c(3, 16.7, 2, 2))
+plot(TukeyHSD(model1),las=2)
+```
+
+Any confidence interval that do not reach 0 tells us that they are different. LT high school and high school compared to graduate is shown to be different because they do not reach 0 they only contain negative intervals.
 
 # Discussion and Conclusion
 
